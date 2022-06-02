@@ -1,0 +1,56 @@
+{
+    "name": "SCTK 10x CellRanger import", 
+    "description": "This tool runs the SCTK CellRanger import process to create a WebMeV-compatible count matrix given the typical three files created by the 10x Genomics' CellRanger software. Note that when you upload your three files for this process, you will assign them to the \"general file\" type. Also note that this works on a single scRNA-seq sample.", 
+    "inputs": {
+        "sample_name": {
+            "description": "This is the name of the sample. Used simply for identifying the output file.", 
+            "name": "Sample name:", 
+            "required": true, 
+            "spec": {
+                "attribute_type": "String"
+            }
+        },
+        "barcodes": {
+            "description": "This is the file of cell barcodes. Typically, you will see this named \"barcodes.tsv.gz\" or similar. This file must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
+            "name": "Barcodes file:", 
+            "required": true, 
+            "spec": {
+                "attribute_type": "VariableDataResource", 
+                "resource_types": ["*"], 
+                "many": false
+            }
+        },
+        "features": {
+            "description": "This is the file of genomic features used in the quantification. Typically, you will see this named \"features.tsv.gz\" or similar. This file must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
+            "name": "Features file:", 
+            "required": true, 
+            "spec": {
+                "attribute_type": "VariableDataResource", 
+                "resource_types": ["*"], 
+                "many": false
+            }
+        },
+        "matrix": {
+            "description": "This is the file of read quantifications stored in an efficient sparse matrix format. Typically, you will see this named \"matrix.tsv.gz\" or similar. This file must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
+            "name": "Matrix file:", 
+            "required": true, 
+            "spec": {
+                "attribute_type": "VariableDataResource", 
+                "resource_types": ["*"], 
+                "many": false
+            }
+        }
+    }, 
+    "outputs": {
+        "output_matrix": {
+            "required": true,
+            "spec": {
+                "attribute_type": "DataResource", 
+                "resource_type": "RNASEQ_COUNT_MTX",
+                "many": false
+            }
+        }
+    }, 
+    "mode": "local_docker",
+    "workspace_operation": true
+}

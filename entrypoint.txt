@@ -1,0 +1,1 @@
+Rscript /opt/software/ingest_10x.R -b {{barcodes}} -f {{features}} -m {{matrix}} -s {{sample_name}}

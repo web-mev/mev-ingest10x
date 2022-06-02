@@ -21,10 +21,6 @@ option_list <- list(
     make_option(
         c("-s", "--sample_name"),
         help="Sample name"
-    ),
-    make_option(
-        c("-o", "--output_file"),
-        help="Output TSV file name"
     )
 )
 
@@ -53,6 +49,10 @@ if (is.null(opt$matrix)){
     quit(status=1)
 }
 
+# change the working directory to co-locate with one of the 3 input files:
+working_dir <- dirname(opt$barcodes)
+setwd(working_dir)
+
 # Dummy out the CellRanger file structure
 cellranger_path = paste(
     ".",
@@ -64,9 +64,14 @@ cellranger_path = paste(
 dir.create(cellranger_path)
 
 # Fills downstream folder with data
+dest_files <- c(
+    paste(cellranger_path, 'barcodes.tsv.gz', sep='/'),
+    paste(cellranger_path, 'features.tsv.gz', sep='/'),
+    paste(cellranger_path, 'matrix.tsv.gz', sep='/')
+)
 file.copy(
     c(opt$barcodes, opt$features, opt$matrix),
-    cellranger_path
+    dest_files
 )
 
 # import CellRanger
@@ -82,10 +87,23 @@ sce <- importCellRanger(
 # Convert sce counts to non-sparse matrix
 counts <- as.matrix(counts(sce))
 
+output_file = paste(
+    working_dir,
+    paste0(opt$sample_name, '.tsv'),
+    sep='/'
+)
+
 # Export counts to TSV
 write.table(
     counts,
-    file = opt$output_file,
+    file = output_file,
     sep = "\t",
     quote = F
 )
+
+# for WebMEV compatability, need to create an outputs.json file.
+json_str = paste0(
+       '{"output_matrix":"', output_file, '"}'
+)
+output_json <- paste(working_dir, 'outputs.json', sep='/')
+write(json_str, output_json)
