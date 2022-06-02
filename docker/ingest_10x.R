@@ -61,7 +61,7 @@ cellranger_path = paste(
     "outs/filtered_feature_bc_matrix",
     sep="/"
 )
-dir.create(cellranger_path)
+dir.create(cellranger_path, recursive=T)
 
 # Fills downstream folder with data
 dest_files <- c(
