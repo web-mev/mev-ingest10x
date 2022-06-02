@@ -11,7 +11,7 @@
             }
         },
         "barcodes": {
-            "description": "This is the file of cell barcodes. Typically, you will see this named \"barcodes.tsv.gz\" or similar. This file must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
+            "description": "This is the file of cell barcodes. Typically, you will see this named \"barcodes.tsv.gz\" or similar. The name of the file does not matter, but it must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
             "name": "Barcodes file:", 
             "required": true, 
             "spec": {
@@ -21,7 +21,7 @@
             }
         },
         "features": {
-            "description": "This is the file of genomic features used in the quantification. Typically, you will see this named \"features.tsv.gz\" or similar. This file must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
+            "description": "This is the file of genomic features used in the quantification. Typically, you will see this named \"features.tsv.gz\" or similar. The name of the file does not matter, but it must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
             "name": "Features file:", 
             "required": true, 
             "spec": {
@@ -31,7 +31,7 @@
             }
         },
         "matrix": {
-            "description": "This is the file of read quantifications stored in an efficient sparse matrix format. Typically, you will see this named \"matrix.tsv.gz\" or similar. This file must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
+            "description": "This is the file of read quantifications stored in an efficient sparse matrix format. Typically, you will see this named \"matrix.mtx.gz\" or similar. The name of the file does not matter, but it must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
             "name": "Matrix file:", 
             "required": true, 
             "spec": {

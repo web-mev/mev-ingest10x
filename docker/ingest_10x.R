@@ -67,7 +67,7 @@ dir.create(cellranger_path, recursive=T)
 dest_files <- c(
     paste(cellranger_path, 'barcodes.tsv.gz', sep='/'),
     paste(cellranger_path, 'features.tsv.gz', sep='/'),
-    paste(cellranger_path, 'matrix.tsv.gz', sep='/')
+    paste(cellranger_path, 'matrix.mtx.gz', sep='/')
 )
 file.copy(
     c(opt$barcodes, opt$features, opt$matrix),
