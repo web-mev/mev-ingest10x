@@ -6,5 +6,6 @@ RUN R -e "install.packages('optparse',dependencies=TRUE, repos='http://cran.rstu
 # Add the sctk seurat clustering script
 RUN mkdir -p /opt/software
 ADD ingest_10x.R /opt/software/
+ADD run.sh /opt/software/
 
 ENTRYPOINT ["/bin/bash"]
