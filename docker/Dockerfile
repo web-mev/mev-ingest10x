@@ -7,5 +7,6 @@ RUN R -e "install.packages('optparse',dependencies=TRUE, repos='http://cran.rstu
 RUN mkdir -p /opt/software
 ADD ingest_10x.R /opt/software/
 ADD run.sh /opt/software/
+RUN chmod +x /opt/software/run.sh
 
 ENTRYPOINT ["/bin/bash"]
