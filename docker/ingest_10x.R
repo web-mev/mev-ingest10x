@@ -69,7 +69,10 @@ dest_files <- c(
     paste(cellranger_path, 'features.tsv.gz', sep='/'),
     paste(cellranger_path, 'matrix.mtx.gz', sep='/')
 )
-file.copy(
+
+# don't need, but otherwise it prints booleans to 
+# the output
+copy_status <- file.copy(
     c(opt$barcodes, opt$features, opt$matrix),
     dest_files
 )
@@ -77,11 +80,19 @@ file.copy(
 # import CellRanger
 # It does not matter if filtered or not, 
 # as we made a dummy CellRanger directory
-sce <- importCellRanger(
-    cellRangerDirs = parent_dir,
-    sampleDirs = opt$sample_name,
-    sampleNames = NULL,
-    dataType = "filtered"
+sce <- tryCatch(
+  {    
+     importCellRanger(
+        cellRangerDirs = parent_dir,
+        sampleDirs = opt$sample_name,
+        sampleNames = NULL,
+        dataType = "filtered"
+    )
+  },
+  error=function(err){
+    message('There was an error when reading the files. This can happen if the files become mixed up. Please check that your input files were correctly entered.')
+    quit(status=1)
+  }
 )
 
 # Convert sce counts to non-sparse matrix
