@@ -1,6 +1,0 @@
-{
-    "barcodes":"api.converters.data_resource.LocalDockerSingleDataResourceConverter", 
-    "features":"api.converters.data_resource.LocalDockerSingleDataResourceConverter", 
-    "matrix":"api.converters.data_resource.LocalDockerSingleDataResourceConverter", 
-    "sample_name": "api.converters.basic_attributes.StringConverter"
-  }

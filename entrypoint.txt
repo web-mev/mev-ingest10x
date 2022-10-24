@@ -1,1 +1,1 @@
-/opt/software/run.sh {{barcodes}} {{features}} {{matrix}} {{sample_name}}
+/opt/software/run.sh {{barcodes}} {{features}} {{matrix}} "{{sample_name}}"
