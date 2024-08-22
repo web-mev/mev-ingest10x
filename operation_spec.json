@@ -15,7 +15,7 @@
             "description": "This is the file of cell barcodes. Typically, you will see this named \"barcodes.tsv.gz\" or similar. The name of the file does not matter, but it must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
             "name": "Barcodes file:", 
             "required": true,
-            "converter": "api.converters.data_resource.LocalDockerSingleVariableDataResourceConverter",
+            "converter": "api.converters.data_resource.ECSSingleVariableDataResourceConverter",
             "spec": {
                 "attribute_type": "VariableDataResource", 
                 "resource_types": ["*"], 
@@ -26,7 +26,7 @@
             "description": "This is the file of genomic features used in the quantification. Typically, you will see this named \"features.tsv.gz\" or similar. The name of the file does not matter, but it must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
             "name": "Features file:", 
             "required": true, 
-            "converter": "api.converters.data_resource.LocalDockerSingleVariableDataResourceConverter",
+            "converter": "api.converters.data_resource.ECSSingleVariableDataResourceConverter",
             "spec": {
                 "attribute_type": "VariableDataResource", 
                 "resource_types": ["*"], 
@@ -37,7 +37,7 @@
             "description": "This is the file of read quantifications stored in an efficient sparse matrix format. Typically, you will see this named \"matrix.mtx.gz\" or similar. The name of the file does not matter, but it must remain in the gzip-compressed format which is canonically denoted with the \"gz\" file extension.", 
             "name": "Matrix file:", 
             "required": true, 
-            "converter": "api.converters.data_resource.LocalDockerSingleVariableDataResourceConverter",
+            "converter": "api.converters.data_resource.ECSSingleVariableDataResourceConverter",
             "spec": {
                 "attribute_type": "VariableDataResource", 
                 "resource_types": ["*"], 
@@ -48,7 +48,7 @@
     "outputs": {
         "output_matrix": {
             "required": true,
-            "converter": "api.converters.data_resource.LocalDockerSingleDataResourceConverter",
+            "converter": "api.converters.data_resource.ECSSingleDataResourceConverter",
             "spec": {
                 "attribute_type": "DataResource", 
                 "resource_type": "RNASEQ_COUNT_MTX",
@@ -56,6 +56,6 @@
             }
         }
     }, 
-    "mode": "local_docker",
+    "mode": "ecs",
     "workspace_operation": true
 }
